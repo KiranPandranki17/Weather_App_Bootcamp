@@ -10,6 +10,10 @@ function WeatherDashboard() {
   // Retrieve search history from local storage or initialize an empty array
   let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 
+  todaySection.classList.add("hidden");
+  forecastSection.classList.add("hidden");
+  searchForm.reset();
+
   // OpenWeatherMap API key
   const apiKey = "7ca8c991dc4c4cf5a9012c5a6b9731be";
 

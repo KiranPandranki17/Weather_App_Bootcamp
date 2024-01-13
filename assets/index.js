@@ -34,7 +34,7 @@ function WeatherDashboard() {
       if (event.target.classList.contains("history")) {
         const cityName = event.target.textContent;
         getWeatherData(cityName);
-      } else if (event.target.innerText === "clear") {
+      } else if (event.target.innerText === "clear History") {
         // Clear search history
         clearSearchHistory();
         renderSearchHistory();

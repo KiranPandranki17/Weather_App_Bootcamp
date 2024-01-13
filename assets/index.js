@@ -34,7 +34,7 @@ function WeatherDashboard() {
       if (event.target.classList.contains("history")) {
         const cityName = event.target.textContent;
         getWeatherData(cityName);
-      } else if (event.target.innerText === "clear History") {
+      } else if (event.target.contains("clear")) {
         // Clear search history
         clearSearchHistory();
         renderSearchHistory();
@@ -156,7 +156,7 @@ function WeatherDashboard() {
     // Add clear button to the search history
     const clearButton = document.createElement("button");
     clearButton.innerText = "Clear History";
-    clearButton.classList.add("btn", "btn-danger");
+    clearButton.classList.add("btn", "btn-danger","clear");
     historyList.appendChild(clearButton);
   }
 

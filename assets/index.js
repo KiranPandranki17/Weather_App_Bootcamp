@@ -155,7 +155,8 @@ function WeatherDashboard() {
 
     // Add clear button to the search history
     const clearButton = document.createElement("button");
-    clearButton.innerText = "clear";
+    clearButton.innerText = "Clear History";
+    clearButton.classList.add("btn", "btn-danger");
     historyList.appendChild(clearButton);
   }
 

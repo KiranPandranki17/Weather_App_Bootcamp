@@ -1,5 +1,5 @@
 // Function to initialize the weather dashboard page
-function initializeWeatherDashboard() {
+function WeatherDashboard() {
   // DOM elements
   const inputCity = document.getElementById("search-input");
   const historyList = document.getElementById("history");
@@ -12,6 +12,31 @@ function initializeWeatherDashboard() {
 
   // OpenWeatherMap API key
   const apiKey = "7ca8c991dc4c4cf5a9012c5a6b9731be";
+
+    // Event listener for form submission
+    document.getElementById("search-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const cityName = inputCity.value.trim();
+      if (cityName) {
+        // Fetch weather data and update search history
+        getWeatherData(cityName);
+        updateSearchHistory(cityName);
+        renderSearchHistory();
+      }
+    });
+  
+    // Event listener for history item click
+    historyList.addEventListener("click", function (event) {
+      if (event.target.classList.contains("history")) {
+        const cityName = event.target.textContent;
+        getWeatherData(cityName);
+      } else if (event.target.innerText === "clear") {
+        // Clear search history
+        clearSearchHistory();
+        renderSearchHistory();
+      }
+    });
+  
 
   // Function to fetch weather data from the OpenWeatherMap API
   function getWeatherData(cityName) {
@@ -88,7 +113,51 @@ function initializeWeatherDashboard() {
     }
   }
 
+  
+  // Function to update search history
+  function updateSearchHistory(cityName) {
+    let isDuplicate = searchHistory.every(function (name) {
+      return name !== cityName;
+    });
+
+    if (isDuplicate) {
+      searchHistory.push(cityName);
+    }
+
+    localStorage.setItem("search", JSON.stringify(searchHistory));
+  }
+
+  // Function to clear search history
+  function clearSearchHistory() {
+    searchHistory = [];
+    todaySection.innerText = "";
+    forecastSection.innerText = "";
+    todaySection.classList.add("hidden");
+    forecastSection.classList.add("hidden");
+    searchForm.reset();
+    localStorage.setItem("search", JSON.stringify(searchHistory));
+  }
+
+  // Function to render search history
+  function renderSearchHistory() {
+    historyList.innerHTML = "";
+
+    for (let i = 0; i < searchHistory.length; i++) {
+      const historyItem = document.createElement("button");
+      historyItem.classList.add("list-group-item", "list-group-item-action", "history");
+      historyItem.innerText = searchHistory[i];
+      historyList.appendChild(historyItem);
+    }
+
+    // Add clear button to the search history
+    const clearButton = document.createElement("button");
+    clearButton.innerText = "clear";
+    historyList.appendChild(clearButton);
+  }
+
+  // Initial rendering of search history
+  renderSearchHistory();
 
 }
 
-initializeWeatherDashboard();
+WeatherDashboard();

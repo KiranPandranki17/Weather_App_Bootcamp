@@ -30,12 +30,12 @@ The Weather Dashboard is a web application that allows users to see the weather 
    ```
 
 2.Navigate to the project directory:
-```bash
-cd Weather_App_Bootcamp
-```
+  ```bash
+  cd Weather_App_Bootcamp
+  ```
 3.Open the index.html file in your preferred web browser.
 
-4.Register for an API key at OpenWeatherMap and replace {API key} in the base URL (https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}) in the code with your API key.
+4.Register for an API key at OpenWeatherMap and replace in the code with your API key.
 
 5.Start exploring weather conditions for multiple cities!
 

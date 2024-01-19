@@ -46,10 +46,10 @@ Access a 5-day forecast with date, weather icon, temperature, and humidity.
 Click on a city in the search history to see its current and future conditions again.
 
 ## Technologies Used
--HTML
--CSS
--JavaScript
--OpenWeather API
+- HTML
+- CSS
+- JavaScript
+- OpenWeather API
 
 ## Acknowledgements
 This project was developed as part of a coding challenge. Special thanks to OpenWeatherMap for providing the weather data API.
